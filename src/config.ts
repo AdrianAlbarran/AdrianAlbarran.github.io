@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Adrián Albarrán",
+  name: "Adrián Albarrán / WIP",
   title: "Junior Software Engineer",
   description: "Portfolio website of Ryan Fitzgerald",
   accentColor: "#1d4ed8",
@@ -17,13 +17,15 @@ export const siteConfig = {
       slug: "brawlight-manor",
       description:
         "Brawlight Manor is a videogame where I took the position of engine and lights programmer.",
-      link: "https://aidevroundup.com/?ref=devportfolio",
+      link: "https://pusiriot.itch.io/brawlight-manor",
       skills: ["Unity", "URP_MOD", "C#"],
       image: "/BrawlightManor.png",
       extendedDescription: [
-        "<strong>Primer elemento de la lista</strong>",
-        "<em>Segundo elemento</em>", 
-        "Tercer elemento"
+        "<strong><em>Engine modification:</em></strong> Modified Unity URP's <strong>distance attenuation function</strong> to enforce hard light boundaries" +
+        "using an inverse polynomial function. Optimized performance by utilizing squared distances to avoid expensive square root calculations.",
+        "<strong><em>Gameplay Architecture:</em></strong> Engineered a callback pattern for a competitive item-capture system, centralizing control" +
+        "logic within the target object to manage multiple player actions simultaneously.",
+        "ADD A IMAGE OF A BEFORE AND AFTER OF THE LIGHTING SYSTEM",
       ],
       extendedImage: "/BrawlightManor.png",
     },
@@ -31,10 +33,17 @@ export const siteConfig = {
       name: "Drowned In Taxes - Videogame - Unity 2022",
       slug: "drowned-in-taxes",
       description:
-        "Master the art of building production-ready, full-stack Chrome Extensions using modern web technologies and best practices",
-      link: "https://fullstackextensions.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
-      extendedDescription: "Descripción extendida del proyecto Drowned In Taxes...",
+        "Videogame where I tool the role of lead developer, mainly responsible for procedural generation of hexagonal maps and a custom pathfinding.",
+      link: "https://gluglugames.itch.io/ahogado-en-impuestos",
+      skills: ["Unity", "Game Programming", "Math", "C#"],
+      image: "/DrownedInTaxes.png",
+      extendedDescription: [
+        "<strong><em>Procedural Generation:</em></strong> Implemented a procedural hexagonal map generator." + 
+        "Addeda a custom coordinate system for efficient map generation and navigation, since hexagons don't follow simple grid patterns.",
+        "<strong><em>Pathfinding & AI:</em></strong>  Implementation of modified A* algorithm to work with hexagons." + 
+        "Cube coordinate system was used on a 2D grid to make pathfinding possible.",
+      ],
+      extendedImage: "/HexagonalCubeCoords.png",
     },
     {
       name: "Vulkan Rendering Engine (C++)",
