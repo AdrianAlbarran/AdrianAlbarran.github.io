@@ -1,38 +1,67 @@
 export const siteConfig = {
-  name: "Ryan Fitzgerald",
-  title: "Senior Software Engineer",
+  name: "Adrián Albarrán",
+  title: "Junior Software Engineer",
   description: "Portfolio website of Ryan Fitzgerald",
   accentColor: "#1d4ed8",
   social: {
-    email: "your-email@example.com",
-    linkedin: "https://linkedin.com/in/yourprofile",
-    twitter: "https://x.com/rfitzio",
-    github: "https://github.com/RyanFitzgerald",
+    email: "a.albarran.alc@gmail.com",
+    linkedin: "https://www.linkedin.com/in/adrian-albarran-alcalde/",
+    github: "https://github.com/AdrianAlbarran",
   },
   aboutMe:
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos asperiores nihil consequatur tempore cupiditate architecto natus commodi corrupti quas quasi facere est, dignissimos odit nam veniam sapiente ut, vitae eligendi ipsum dolor, nostrum ullam impedit! Corrupti ratione mollitia temporibus necessitatibus, consectetur reiciendis recusandae id, dolorum quaerat, vero pariatur. Ratione!",
   skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker"],
   projects: [
     {
-      name: "AI Dev Roundup Newsletter",
+      name: "Brawlight Manor - Videogame - Unity 6",
+      slug: "brawlight-manor",
       description:
-        "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
+        "Brawlight Manor is a videogame where I took the position of engine and lights programmer.",
       link: "https://aidevroundup.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+      skills: ["Unity", "URP_MOD", "C#"],
+      image: "/BrawlightManor.png",
+      extendedDescription: [
+        "<strong>Primer elemento de la lista</strong>",
+        "<em>Segundo elemento</em>", 
+        "Tercer elemento"
+      ],
+      extendedImage: "/BrawlightManor.png",
     },
     {
-      name: "Chrome Extension Mastery: Build Full-Stack Extensions with React & Node.js",
+      name: "Drowned In Taxes - Videogame - Unity 2022",
+      slug: "drowned-in-taxes",
       description:
         "Master the art of building production-ready, full-stack Chrome Extensions using modern web technologies and best practices",
       link: "https://fullstackextensions.com/?ref=devportfolio",
       skills: ["React", "Node.js", "AWS"],
+      extendedDescription: "Descripción extendida del proyecto Drowned In Taxes...",
     },
     {
-      name: "ExtensionKit",
+      name: "Vulkan Rendering Engine (C++)",
+      slug: "vulkan-rendering-engine",
       description:
         "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
       link: "https://extensionkit.io/?ref=devportfolio",
       skills: ["React", "Node.js", "AWS"],
+      extendedDescription: "Motor de renderizado Vulkan desarrollado en C++ con soporte para técnicas avanzadas de iluminación y shaders personalizados.",
+    },
+    {
+      name: "MIS Ray Tracer in Nori Engine",
+      slug: "mis-ray-tracer",
+      description:
+        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
+      link: "https://extensionkit.io/?ref=devportfolio",
+      skills: ["React", "Node.js", "AWS"],
+      extendedDescription: "Implementación de un trazador de rayos con múltiples importancias (MIS) utilizando el motor Nori.",
+    },
+    {
+      name: "Physics & Mathematical Simulations",
+      slug: "physics-simulations",
+      description:
+        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
+      link: "https://extensionkit.io/?ref=devportfolio",
+      skills: ["React", "Node.js", "AWS"],
+      extendedDescription: "Simulaciones interactivas de física y matemáticas implementadas para visualizar conceptos científicos.",
     },
   ],
   experience: [

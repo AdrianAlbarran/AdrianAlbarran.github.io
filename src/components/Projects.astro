@@ -3,6 +3,22 @@ import { siteConfig } from "../config";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 ---
 
+<script>
+  function setupProjects() {
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('.external-link')) return;
+        
+        card.classList.toggle('expanded');
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupProjects);
+  document.addEventListener('astro:page-load', setupProjects);
+</script>
+
 {
   hasProjects && (
     <section id="projects" class="p-8 sm:p-12 md:p-16 lg:p-24">
@@ -19,31 +35,26 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
           </div>
 
           <div class="lg:col-span-8">
-            <div class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {siteConfig.projects.map((project, index) => {
-                const Component = project.link ? "a" : "div";
-                const linkProps = project.link
-                  ? {
-                      href: project.link,
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    }
-                  : {};
+                const isLastOdd = siteConfig.projects.length % 2 === 1 && index === siteConfig.projects.length - 1;
+                const hasExtendedContent = (project.extendedDescription && (typeof project.extendedDescription === 'string' ? project.extendedDescription : project.extendedDescription.length > 0)) || project.extendedImage;
 
                 return (
-                  <div class="group relative">
-                    <Component
-                      {...linkProps}
-                      class={`block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 ${
-                        project.link
-                          ? "hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
-                          : ""
-                      }`}
+                  <div class={`group relative ${isLastOdd ? "md:col-span-2 md:max-w-[50%] md:mx-auto" : ""}`}>
+                    <div
+                      class={`project-card cursor-pointer relative p-4 sm:p-5 md:p-6 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 ${hasExtendedContent ? 'hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1' : ''} expanded:bg-white expanded:shadow-xl expanded:border-gray-300`}
                     >
                       {project.link && (
-                        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="external-link absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 hover:bg-gray-700 z-10"
+                          onclick={(e) => e.stopPropagation()}
+                        >
                           <svg
-                            class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -55,11 +66,21 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
                               d="M7 17L17 7M17 7H7M17 7V17"
                             />
                           </svg>
-                        </div>
+                        </a>
                       )}
 
-                      <div class="space-y-4">
-                        <div>
+                      <div class="space-y-4 flex flex-col">
+                        {project.image && (
+                          <div class="relative overflow-hidden rounded-lg sm:rounded-xl aspect-video bg-gray-100 flex-shrink-0">
+                            <img
+                              src={project.image}
+                              alt={`${project.name} preview`}
+                              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                        )}
+
+                        <div class="flex-grow-0">
                           <span
                             class="text-sm font-mono"
                             style={{ color: siteConfig.accentColor }}
@@ -80,18 +101,48 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
                         {project.skills && project.skills.length > 0 && (
                           <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                             {project.skills.map((skill) => (
-                              <span
-                                class={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
-                                  project.link ? "group-hover:bg-gray-800" : ""
-                                }`}
-                              >
+                              <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium">
                                 {skill}
                               </span>
                             ))}
                           </div>
                         )}
+
+                        {/* Expanded Content */}
+                        <div class="project-expanded-content hidden mt-auto pt-6 border-t border-gray-200">
+                          {project.extendedDescription && (
+                            typeof project.extendedDescription === 'string' ? (
+                              <p class="text-base sm:text-lg text-gray-600 leading-relaxed" set:html={project.extendedDescription} />
+                            ) : (
+                              <ul class="list-disc list-inside space-y-2 text-base sm:text-lg text-gray-600 leading-relaxed">
+                                {project.extendedDescription.map((item: string) => (
+                                  <li set:html={item} />
+                                ))}
+                              </ul>
+                            )
+                          )}
+
+                          {project.extendedImage && (
+                            <div class="mt-4 relative overflow-hidden rounded-lg sm:rounded-xl aspect-video bg-gray-100">
+                              <img
+                                src={project.extendedImage}
+                                alt={`${project.name} extended preview`}
+                                class="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
+                        </div>
+
+                        {hasExtendedContent && (
+                          <div class="mt-auto pt-4 flex items-center gap-2 text-sm text-gray-500">
+                            <span class="toggle-hint">Click para {typeof project.extendedDescription === 'string' ? 'ver más' : 'expandir'}</span>
+                            <svg class="w-4 h-4 transition-transform duration-300 toggle-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
+                        )}
                       </div>
-                    </Component>
+                    </div>
                   </div>
                 );
               })}
@@ -102,3 +153,24 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
     </section>
   )
 }
+
+<style>
+  .project-card.expanded .project-expanded-content {
+    display: block;
+  }
+  
+  .project-card.expanded .toggle-hint,
+  .project-card.expanded .toggle-arrow {
+    display: none;
+  }
+  
+  .toggle-arrow {
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(3px); }
+    60% { transform: translateY(1px); }
+  }
+</style>
