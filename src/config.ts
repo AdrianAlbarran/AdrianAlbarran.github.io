@@ -52,7 +52,9 @@ export const siteConfig = {
         "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
       link: "https://extensionkit.io/?ref=devportfolio",
       skills: ["React", "Node.js", "AWS"],
+      image: "/VulkanPBR.png",
       extendedDescription: "Motor de renderizado Vulkan desarrollado en C++ con soporte para técnicas avanzadas de iluminación y shaders personalizados.",
+      extendedImage: "/VulkanShadows.png",
     },
     {
       name: "MIS Ray Tracer in Nori Engine",
@@ -61,6 +63,7 @@ export const siteConfig = {
         "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
       link: "https://extensionkit.io/?ref=devportfolio",
       skills: ["React", "Node.js", "AWS"],
+      image: "NEE.png",
       extendedDescription: "Implementación de un trazador de rayos con múltiples importancias (MIS) utilizando el motor Nori.",
     },
     {
