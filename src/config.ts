@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: "Adrián Albarrán / WIP",
+  name: "Adrián Albarrán",
   title: "Junior Software Engineer",
-  description: "Portfolio website of Ryan Fitzgerald",
+  description: "Portfolio website of Adrián Albarrán Alcalde ",
   accentColor: "#1d4ed8",
   social: {
     email: "a.albarran.alc@gmail.com",
@@ -9,8 +9,8 @@ export const siteConfig = {
     github: "https://github.com/AdrianAlbarran",
   },
   aboutMe:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos asperiores nihil consequatur tempore cupiditate architecto natus commodi corrupti quas quasi facere est, dignissimos odit nam veniam sapiente ut, vitae eligendi ipsum dolor, nostrum ullam impedit! Corrupti ratione mollitia temporibus necessitatibus, consectetur reiciendis recusandae id, dolorum quaerat, vero pariatur. Ratione!",
-  skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker"],
+    "I am Adrián Albarrán, a game developer and researcher at Rey Juan Carlos University. I have developed multiple studies and projects about videogames and their utility in education, which has given me the opportunity to be featured on multiple nacional television and radio. Ever since graduating with honors with my bachelor's degree, my goal has been to build a career that allows me to make a real impact on the world.",
+  skills: ["Unity", "C#", "C++", "Rendering"],
   projects: [
     {
       name: "Brawlight Manor - Videogame - Unity 6",
@@ -24,10 +24,8 @@ export const siteConfig = {
         "<strong><em>Engine modification:</em></strong> Modified Unity URP's <strong>distance attenuation function</strong> to enforce hard light boundaries" +
         "using an inverse polynomial function. Optimized performance by utilizing squared distances to avoid expensive square root calculations.",
         "<strong><em>Gameplay Architecture:</em></strong> Engineered a callback pattern for a competitive item-capture system, centralizing control" +
-        "logic within the target object to manage multiple player actions simultaneously.",
-        "ADD A IMAGE OF A BEFORE AND AFTER OF THE LIGHTING SYSTEM",
+        "logic within the target object to manage multiple player actions simultaneously."
       ],
-      extendedImage: "/BrawlightManor.png",
     },
     {
       name: "Drowned In Taxes - Videogame - Unity 2022",
