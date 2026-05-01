@@ -9,7 +9,9 @@ export const siteConfig = {
     github: "https://github.com/AdrianAlbarran",
   },
   aboutMe:
-    "I am Adrián Albarrán, a game developer and researcher at Rey Juan Carlos University. I have developed multiple studies and projects about videogames and their utility in education, which has given me the opportunity to be featured on multiple nacional television and radio. Ever since graduating with honors with my bachelor's degree, my goal has been to build a career that allows me to make a real impact on the world.",
+    "I am Adrián Albarrán, a game developer and researcher at Rey Juan Carlos University." +
+    " I have developed multiple studies and projects about videogames and their utility in education, which has given me the opportunity to be featured on multiple nacional television and radio." +
+    " Ever since graduating with honors with my bachelor's degree, my goal has been to build a career that allows me to make a real impact on the world",
   skills: ["Unity", "C#", "C++", "Rendering"],
   projects: [
     {
@@ -18,14 +20,15 @@ export const siteConfig = {
       description:
         "Brawlight Manor is a videogame where I took the position of engine and lights programmer.",
       link: "https://pusiriot.itch.io/brawlight-manor",
-      skills: ["Unity", "URP_MOD", "C#"],
+      skills: ["C#", "Unity", "URP_MOD"],
       image: "/BrawlightManor.png",
       extendedDescription: [
         "<strong><em>Engine modification:</em></strong> Modified Unity URP's <strong>distance attenuation function</strong> to enforce hard light boundaries" +
         "using an inverse polynomial function. Optimized performance by utilizing squared distances to avoid expensive square root calculations.",
         "<strong><em>Gameplay Architecture:</em></strong> Engineered a callback pattern for a competitive item-capture system, centralizing control" +
-        "logic within the target object to manage multiple player actions simultaneously."
+        "logic within the target object to manage multiple player actions simultaneously"
       ],
+      extendedImage: "",
     },
     {
       name: "Drowned In Taxes - Videogame - Unity 2022",
@@ -33,13 +36,13 @@ export const siteConfig = {
       description:
         "Videogame where I tool the role of lead developer, mainly responsible for procedural generation of hexagonal maps and a custom pathfinding.",
       link: "https://gluglugames.itch.io/ahogado-en-impuestos",
-      skills: ["Unity", "Game Programming", "Math", "C#"],
+      skills: [ "C#", "Unity", "Math", "Game Programming"],
       image: "/DrownedInTaxes.png",
       extendedDescription: [
         "<strong><em>Procedural Generation:</em></strong> Implemented a procedural hexagonal map generator." + 
         "Addeda a custom coordinate system for efficient map generation and navigation, since hexagons don't follow simple grid patterns.",
         "<strong><em>Pathfinding & AI:</em></strong>  Implementation of modified A* algorithm to work with hexagons." + 
-        "Cube coordinate system was used on a 2D grid to make pathfinding possible.",
+        "Cube coordinate system was used on a 2D grid to make pathfinding possible",
       ],
       extendedImage: "/HexagonalCubeCoords.png",
     },
@@ -47,31 +50,45 @@ export const siteConfig = {
       name: "Vulkan Rendering Engine (C++)",
       slug: "vulkan-rendering-engine",
       description:
-        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
-      link: "https://extensionkit.io/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "Vulkan rendering engine developed in C++ with support for advanced lighting techniques and custom shaders",
+      link: "",
+      skills: ["C++", "Vulkan", "Real-Time Rendering"],
       image: "/VulkanPBR.png",
-      extendedDescription: "Motor de renderizado Vulkan desarrollado en C++ con soporte para técnicas avanzadas de iluminación y shaders personalizados.",
+      extendedDescription: [
+        "<strong><em>Ray Tracing & Shadows:</em></strong> Modified a Vulkan framework to implement Shadow Mapping with bias adjustment." + 
+        "Added RTX for soft shadows featuring cone-based ray casting, utilizing TBN vectors for uniform distribution",
+
+        "<strong><em>SSAO & Optimization:</em></strong> Implemented SSAO with a noise-reduction blur prior to the final composition pass. Optimized" +
+        " CPU-to-GPU bandwidth by caching blur kernel weights during initialization, eliminating per-frame overhead",
+
+        "<strong><em>PBR Integration:</em></strong> Implented PBR materials, using Cook-torrance BRDF model"
+      
+      ],
       extendedImage: "/VulkanShadows.png",
     },
     {
       name: "MIS Ray Tracer in Nori Engine",
       slug: "mis-ray-tracer",
       description:
-        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
-      link: "https://extensionkit.io/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "Implementation multiple photo realistic offline rendering techniques. Highlighting Multiple Importance Sampling (MIS) ray tracer. Every technique was implemented in the Nori engine",
+      link: "",
+      skills: ["C++", "Nori", "Offline Rendering"],
       image: "NEE.png",
-      extendedDescription: "Implementación de un trazador de rayos con múltiples importancias (MIS) utilizando el motor Nori.",
+      extendedDescription: [
+        "<strong><em>Pure path-tracer:</em></strong> No prediction aproach, rays are casted and will bounce until they hit an emitter or be killed by the Russian Roulette algorithm. This method has huge performance and noise limitations",
+        "<strong><em>NEE with MIS:</em></strong> Implemented Next Event Estimation technique with Multiple Importance Sampling, in each light bounce," + 
+        " the light samples between a ray to an emitter and an out going ray depending of the material. To determine the light emitter and its weight, MIS technique is used."
+      ],
+      extendedImage: "/Pure_vs_NEE.png"
     },
     {
       name: "Physics & Mathematical Simulations",
       slug: "physics-simulations",
       description:
-        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
-      link: "https://extensionkit.io/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
-      extendedDescription: "Simulaciones interactivas de física y matemáticas implementadas para visualizar conceptos científicos.",
+        "Fabrics, fluids and robot arms simulations.",
+      link: "",
+      skills: ["C++", "Math", "Simulation"],
+      extendedDescription: "",
     },
   ],
   experience: [
